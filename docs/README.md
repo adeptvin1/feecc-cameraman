@@ -44,6 +44,7 @@ To configure your Cameraman deployment edit the environment variables, provided 
 
 - `MONGODB_URI` - Your MongoDB connection URI ending with `/db-name`
 - `PRODUCTION_ENVIRONMENT` - Leave null if you want testing credentials to work, otherwise set it to `true`
+- `FFMPEG_COMMAND` - ffmpeg command used for capturing the video stream
 - `CAMERAS_CONFIG` - A JSON-like string for camera configuration. This string represents a JSON list of strings, each
   one describing an RTSP stream ("-" separated stream number, stream socket and RTSP stream URI). Example:
 

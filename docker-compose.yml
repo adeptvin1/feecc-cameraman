@@ -17,3 +17,5 @@ services:
       MONGODB_URI: ''  # Your MongoDB connection URI ending with /db-name
       PRODUCTION_ENVIRONMENT=: null  # Leave null if you want testing credentials to work
       CAMERAS_CONFIG: ''  # A json-like string for camera configuration (check README for more)
+      FFMPEG_COMMAND: 'ffmpeg -loglevel warning -rtsp_transport tcp -i "RTSP_STREAM" -r 25 -c copy -map 0 FILENAME'
+      # ffmpeg command used for capturing the video stream

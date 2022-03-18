@@ -12,6 +12,9 @@ from uuid import uuid4
 from loguru import logger
 
 MINIMAL_RECORD_DURATION_SEC: int = 3
+FFMPEG_COMMAND: str = os.getenv(
+    "FFMPEG_COMMAND", 'ffmpeg -loglevel warning -rtsp_transport tcp -i "RTSP_STREAM" -r 25 -c copy -map 0 FILENAME'
+)
 
 
 @dataclass(frozen=True)
@@ -87,9 +90,10 @@ class Recording:
         """Execute ffmpeg command"""
         # ffmpeg -loglevel warning -rtsp_transport tcp -i "rtsp://login:password@ip:port/Streaming/Channels/101" \
         # -c copy -map 0 vid.mp4
-        command: str = (
-            f'ffmpeg -loglevel warning -rtsp_transport tcp -i "{self.rtsp_steam}" -r 25 -c copy -map 0 {self.filename}'
-        )
+        command = FFMPEG_COMMAND
+        command = command.replace("RTSP_STREAM", self.rtsp_steam, 1)
+        command = command.replace("FILENAME", str(self.filename), 1)
+
         self.process_ffmpeg = await asyncio.subprocess.create_subprocess_shell(
             cmd=command,
             stdout=asyncio.subprocess.PIPE,

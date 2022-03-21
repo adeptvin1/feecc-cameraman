@@ -9,7 +9,7 @@ services:
     network_mode: host
     restart: always
     volumes:
-      - "./output:/output"
+      - "./output:/src/output"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "~/.cache/pip/:/root/.cache/pip"

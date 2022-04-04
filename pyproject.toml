@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "feecc-cameraman"
-version = "0.1.0"
+version = "1.0.0"
 description = "A camera and recording manager for Feecc QA system"
 authors = ["arseniiarsenii <arseniivelichko2@gmail.com>"]
 license = "Apache-2.0"

@@ -27,11 +27,10 @@ class MongoDbWrapper(metaclass=SingletonMeta):
     def __init__(self) -> None:
         """connect to database using credentials"""
         logger.info("Connecting to MongoDB")
-        mongo_client_url = MONGODB_URI + "&ssl=true&ssl_cert_reqs=CERT_NONE"
-        mongo_client: AsyncIOMotorClient = AsyncIOMotorClient(mongo_client_url, serverSelectionTimeoutMS=5000)
-        db_name: str = _get_database_name(mongo_client_url)
+        mongo_client: AsyncIOMotorClient = AsyncIOMotorClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
+        db_name: str = _get_database_name(MONGODB_URI)
         self._database = mongo_client[db_name]
-        self._employee_collection: AsyncIOMotorCollection = self._database["Employee-data"]
+        self._employee_collection: AsyncIOMotorCollection = self._database["employeeData"]
 
         logger.info("Connected to MongoDB")
 

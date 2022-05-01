@@ -20,7 +20,7 @@ jobs:
         run: doctl registry login
 
       - name: Build Docker Container
-        run: docker build ./ -tag ${{ secrets.DOREGISTRY}}/feecc-cameraman:master
+        run: docker build ./ -t ${{ secrets.DOREGISTRY}}/feecc-cameraman:master
       
       - name: Tag container for Container Registry Digital Ocean
         run: docker tag ${{ secrets.DOREGISTRY}}/feecc-cameraman:master ${{ secrets.DOREGISTRY}}/feecc-cameraman
